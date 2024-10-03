@@ -54,7 +54,7 @@ def updateList(list, str):
     list.remove(str)
     return list
 
-def apirequest(api_urlpath, api_urls):
+def apirequest(api_urlpath, api_urls, video=False):
     starttime = time.time()
     
     for api in api_urls:
@@ -64,6 +64,10 @@ def apirequest(api_urlpath, api_urls):
         try:
             res = requests.get(api + 'api/v1' + api_urlpath, timeout=max_api_wait_time)
             if res.status_code == 200 and is_json(res.text):
+                if video:
+                    video_url = res.text["formatStreams"][0]["url"]
+                    print(video_url)
+                    print(requests.get(video_url).status_code)
                 return res.text
             else:
                 print(f"エラー: {api}")
@@ -78,7 +82,7 @@ def get_info(request):
     return json.dumps([version, os.environ.get('RENDER_EXTERNAL_URL'), str(request.scope["headers"]), str(request.scope['router'])[39:-2]])
 
 def get_data(videoid):
-    t = json.loads(apirequest(f"/videos/{urllib.parse.quote(videoid)}", invidious_api.videos_api))
+    t = json.loads(apirequest(f"/videos/{urllib.parse.quote(videoid)}", invidious_api.videos_api, video=True))
     return [{"id": i["videoId"], "title": i["title"], "authorId": i["authorId"], "author": i["author"]} for i in t["recommendedVideos"]], list(reversed([i["url"] for i in t["formatStreams"]]))[:2], t["descriptionHtml"].replace("\n", "<br>"), t["title"], t["authorId"], t["author"], t["authorThumbnails"][-1]["url"]
 
 def get_search(q, page):
