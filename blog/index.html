@@ -3,64 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>タイトル</title> <!--タイトルを入れる-->
-        <style>
-            body{
-                margin: 0 auto;
-            }
-            
-            wrapper{
-                margin: 0;
-                padding: 3px;
-                border: solid 3px #ccc;
-            }
-            
-            nav{
-                width: 100%;
-                height: 70px;
-                background-color: dimgray;
-                padding-top: 5px;
-                box-sizing: border-box;
-            }
-            
-            ul{
-                display: flex;
-            }
-            
-            li{
-                list-style: none;
-            }
-            
-            a{
-                display: block;
-                text-decoration: none;
-                color: white;
-                margin-right: 35px;
-            }
-            
-            #main{
-                background-color: #fefefe;
-            }
-            
-        </style>
-        <link rel="stylesheet" href="./style.css">
-        <script>
-            var doc = document;
-            
-            function getElm(id){
-                return doc.getElementById(id)
-            }
-            
-            function check(){
-                if(getElm('check').value == 'pass'){ <!--パスワードを入れる-->
-                    getElm('result').textContent = '正解';
-                    doc.cookie = 'yuki=True; path=/;';
-                    location.replace('/')
-                }else{
-                    getElm('result').textContent = '不正解';
-                }
-                return
-            }
-        </script>
+        <link rel="stylesheet" href="blog/style.css">
     </head>
     <body>
         <div id="wrapper">
@@ -74,12 +17,11 @@
             </div>
             
         </div>
-        <!--  <div id="cookie-notice" class="cookie-notice">
+        <div id="cookie-notice" class="cookie-notice">
         お前はフランが好きか？<br>
         <button id="accept-btn">好き</button>
         <button id="reject-btn">嫌い</button>
     </div>
     <script src="script.js"></script>
-        --> <!--Cookie承認にしたいなら-->
     </body>
 </html>
