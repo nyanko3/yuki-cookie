@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>お前は許さん</title>
+  </head>
+  <body>
+    <div style="text-align: center">
+      お前は<br>
+      <image src="https://raw.githubusercontent.com/nyanko3/gazouokiba/main/furan2.png"></image><br>
+      これを見て好きにならんのか？
+    </div>
+  </body>
+</html>
